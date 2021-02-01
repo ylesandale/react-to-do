@@ -1,13 +1,27 @@
-import React from 'react';
-import List from './components/List/index';
-import AddList from './components/AddList/index';
-import DB from './assets/db.json';
+/* eslint-disable no-unused-vars */
+import React, { useState } from "react";
+import List from "./components/List/index";
+import AddList from "./components/AddList/index";
+import Tasks from "./components/Tasks/index";
+import DB from "./assets/db.json";
 
 function App() {
+  const [lists, setLists] = useState(
+    DB.lists.map((item) => {
+      item.color = DB.colors.filter(
+        (color) => color.id === item.colorId
+      )[0].name;
+      return item;
+    })
+  );
+  const onAddList = (obj) => {
+    const newList = [...lists, obj];
+    setLists(newList);
+  };
   return (
     <div className="todo">
-	    <div className="todo__sidebar">
-       <List
+      <div className="todo__sidebar">
+        <List
           items={[
             {
               icon: (
@@ -24,32 +38,24 @@ function App() {
                   />
                 </svg>
               ),
-				  name: 'Все задачи',
-				  active: true
-            }
+              name: "Все задачи",
+              active: true,
+            },
           ]}
         />
-		   <List
-			items={[
-			 {
-				color: "green",
-				name: 'Покупки',
-			},
-			{
-				color: "blue",
-				name: 'Фронтенд',
-			},
-			{
-				color: "pink",
-				name: 'Фильмы и сериалы',
-			}
-		 ]}
-		 isRemovable={true}
-		 />
-       <AddList colors={DB.colors} />
-		 </div>
-		 <div className="todo_tasks"></div>
-	 </div>
+        <List
+          items={lists}
+          isRemovable={true}
+          onRemove={(list) => {
+            console.log(list);
+          }}
+        />
+        <AddList onAdd={onAddList} colors={DB.colors} />
+      </div>
+      <div className="todo__tasks">
+        <Tasks />
+      </div>
+    </div>
   );
 }
 

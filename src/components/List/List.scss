@@ -1,4 +1,5 @@
 .list {
+	$self: &;
 	margin-bottom: 30px;
 	&__add-button{
 		opacity: 0.4;
@@ -16,6 +17,9 @@
 			}
 		}
 	  }
+	  &__remove-icon {
+		  opacity: 0;
+	  }
 	  .badge {
 		position: relative;
 		left: 5px;
@@ -29,7 +33,20 @@
 		padding: 9px 10px;
 		margin-bottom: 5px;
 
-		transition: opacity .2s linear;
+		transition: background-color 0.15s ease-in-out;
+
+		&:hover #{$self}__remove-icon {
+			opacity: 0.2;
+		 }
+	
+		 #{$self}__remove-icon {
+			opacity: 0;
+			transition: opacity 0.15s ease-in-out;
+	
+			&:hover {
+			  opacity: 0.8;
+			}
+		 }
 
 		&.active {
 		  background: #ffffff;
@@ -38,7 +55,7 @@
 		}
 
 		&:hover {
-			opacity: 1;
+			background: rgba(255, 255, 255, 0.5);
 		}
 
 		i {
@@ -50,6 +67,10 @@
 			  }
 			}
 		 }
+
+		span {
+			flex: 1;
+		}
 
 	}
 }
