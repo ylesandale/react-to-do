@@ -30,7 +30,7 @@
     {
       "id": 1,
       "listId": 2,
-      "text": "Изучить JavaScript",
+      "text": "Изучить JavaScript1",
       "completed": false
     },
     {
@@ -50,12 +50,6 @@
       "listId": 2,
       "text": "Redux (redux-observable, redux-saga)",
       "completed": false
-    },
-    {
-      "listId": 4,
-      "text": "1984",
-      "completed": false,
-      "id": 5
     },
     {
       "listId": 4,

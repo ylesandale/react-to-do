@@ -26,3 +26,6 @@ yarn-error.log*
 .eslintcache
 .eslintrc.json
 .eslintcache
+firebase-debug.log
+.firebase/hosting.YnVpbGQ.cache
+.firebase/hosting.cHVibGlj.cache
